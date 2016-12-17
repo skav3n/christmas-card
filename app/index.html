@@ -15,13 +15,17 @@
     <![endif]-->
     
   <div class="container">
+    <input id="min" class="card-btn card-btn-min" type="radio" name="min-max">
+    <input id="max" class="card-btn card-btn-max" type="radio" name="min-max" checked>
+    <input id="screen" class="card-btn card-btn-screen" type="checkbox">
+
       
-    <div class="card card-fullscreen card-minimized">
+    <div class="card">
       <header class="header">
-        <button id="btnMin" class="card-btn card-btn-max" type="button">max</button>
-        <button id="btnMin" class="card-btn card-btn-min" type="button">_</button>
-        <button id="btnScreen" class="card-btn card-btn-screen" type="button">o</button>
-        <button id="btnClose" class="card-btn card-btn-close" type="button">x</button>
+        <label for="min" class="label-min">_</label>
+        <label for="max" class="label-max">Christmas card</label>
+        <label for="screen" class="label-screen">■</label>
+        <button type="button">X</button>
       </header>
       <div class="content">content Christmas card</div>
       <footer class="footer">footer</footer>

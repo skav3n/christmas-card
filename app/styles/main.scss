@@ -1,39 +1,8 @@
 .container {
 
-  .card.card-fullscreen {
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-  }
-
-  .card.card-minimized {
-    top: auto;
-    right: auto;
-    bottom: 0;
-    left: 0;
-    .header {
-      height: 30px;
-      width: 250px;
-      .card-btn-screen,
-      .card-btn-close,
-      .card-btn-min {
-        display: none;
-      }
-      .card-btn-max {
-        display: inline-block;
-        width: 100%;
-        height: 100%;
-      }
-    }
-    .content,
-    .footer {
-      display: none;
-    }
-  }
   .card {
     position: absolute;
-    border: 5px solid #b9daf3;
+    border: 5px solid #94aec2;
     border-radius: 5px; 
     background-color: black;
     color: white;
@@ -44,14 +13,96 @@
     bottom: 25%;
     left: 25%;
 
+    transition: top 0.1s ease, right 0.1s ease, bottom 0.1s ease, left 0.1s ease;
+
     .header {
       width: 100%;
-      background-color: red;
-      height: 50px;
-
-      .card-btn-max {
+      background-color: #94aec2;
+      border-bottom: 5px solid #94aec2;
+      height: 30px;
+      text-align: right;
+      label {
+        display: inline-block;
+        line-height: 30px;
+        vertical-align: middle;
+        cursor: pointer;
+        margin: 0 1px;
+        width: 30px;
+        background: #b9daf3;
+        text-align: center;
+        &:hover {
+          background: #cee5f6;
+        }
+      }
+      button {
+        height: 100%;
+        width: 30px;
+        background: tomato;
+        color: white;
+        border: 0;
+        margin: 0 1px;
+        padding: 0;
+        cursor: pointer;
+        &:hover {
+          background: #ff917e;
+        }
+      }
+      .label-max {
         display: none;
       }
     }
   }
+
+  .card-btn {
+    display: none;
+  }
+
+  .card-btn-screen:checked + .card {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+  .card-btn.card-btn-min:checked ~ .card {
+    top: calc(100% - 40px);
+    right: 75%;
+    bottom: 0;
+    left: 0;
+    border: 5px solid #94aec2;
+    border-radius: 0;
+    .header {
+      text-align: left;
+      .label-min,
+      .label-screen {
+        display: none;
+      }
+      label {
+        text-align: left;
+        &:hover {
+          background: #c0ddf4;
+        }
+      }
+      button {
+        position: absolute;
+        right: 0;
+        top: 0;
+        border: 0;
+        background: tomato;
+        color: white;
+        &:hover {
+          background: #ff917e;
+        }
+      }
+
+      .label-max {
+        border-radius: 0;
+        
+        width: 100%;
+        background: #94aec2;
+        display: inline-block;
+      }
+    }
+    /* pokazać max ukryć min i screen */
+  }
+
 }
