@@ -1,84 +1,199 @@
-@charset "UTF-8";
-.container .card {
+.container .boxshadow {
+  box-shadow: 0px 0px 30px -10px rgba(0, 0, 0, 0.75); }
+
+.container .filtershadow {
+  filter: drop-shadow(0px 15px 15px rgba(0, 0, 0, 0.5)); }
+
+.container .modal-bg {
+  visibility: hidden;
+  opacity: 0;
+  background: rgba(255, 255, 255, 0.5);
+  display: inline-block;
   position: absolute;
-  border: 5px solid #94aec2;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  transition: visibility 0.5s ease, opacity 0.6s ease; }
+  .container .modal-bg .modal {
+    padding: 30px;
+    background: green;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute; }
+    .container .modal-bg .modal h2,
+    .container .modal-bg .modal p {
+      padding: 0;
+      margin: 0;
+      margin-bottom: 15px; }
+    .container .modal-bg .modal .label-close {
+      margin-top: 25px; }
+    .container .modal-bg .modal .label-close-left,
+    .container .modal-bg .modal .label-close-right {
+      display: inline-block;
+      width: 49%; }
+      .container .modal-bg .modal .label-close-left label,
+      .container .modal-bg .modal .label-close-right label {
+        display: inline-block;
+        padding: 10px 25px;
+        background-color: red;
+        cursor: pointer; }
+    .container .modal-bg .modal .label-close-right {
+      text-align: right; }
+
+.container .card-btn-close:checked + .modal-bg {
+  visibility: visible;
+  opacity: 1;
+  display: inline-block; }
+
+.container .card {
+  border: 4px solid #95A0A6;
+  position: absolute;
   border-radius: 5px;
   background-color: black;
   color: white;
   overflow: hidden;
-  top: 25%;
+  z-index: 5;
+  background-image: url(../images/card-bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  top: 10%;
   right: 25%;
-  bottom: 25%;
+  bottom: 10%;
   left: 25%;
   transition: top 0.1s ease, right 0.1s ease, bottom 0.1s ease, left 0.1s ease; }
+  @media only screen and (max-width: 992px) {
+    .container .card {
+      top: 10%;
+      right: 5%;
+      bottom: 10%;
+      left: 5%; } }
   .container .card .header {
-    width: 100%;
-    background-color: #94aec2;
-    border-bottom: 5px solid #94aec2;
-    height: 30px;
-    text-align: right; }
+    display: inline-block;
+    text-align: right;
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    z-index: 50;
+    white-space: nowrap; }
+    .container .card .header img {
+      width: 100%; }
     .container .card .header label {
       display: inline-block;
-      line-height: 30px;
       vertical-align: middle;
       cursor: pointer;
-      margin: 0 1px;
-      width: 30px;
-      background: #b9daf3;
-      text-align: center; }
-      .container .card .header label:hover {
-        background: #cee5f6; }
-    .container .card .header button {
-      height: 100%;
-      width: 30px;
-      background: tomato;
-      color: white;
+      text-align: center;
+      width: 25%;
+      max-width: 75px; }
+      .container .card .header label:hover i.demo-icon {
+        color: tomato; }
+      .container .card .header label i.demo-icon {
+        color: #ef5323; }
+      .container .card .header label i.icon-minimize {
+        font-size: 25px; }
+      .container .card .header label i.icon-maximize {
+        font-size: 45px; }
+      .container .card .header label i.icon-close {
+        font-size: 45px; }
+    .container .card .header label.label-min {
+      margin-right: 20px; }
+    .container .card .header label.label-screen {
+      padding: 0 15px; }
+    .container .card .header .label-close {
+      vertical-align: middle;
+      background: transparent;
       border: 0;
-      margin: 0 1px;
       padding: 0;
       cursor: pointer; }
-      .container .card .header button:hover {
-        background: #ff917e; }
+      .container .card .header .label-close:focus {
+        outline: 0; }
     .container .card .header .label-max {
+      display: none; }
+  .container .card .content {
+    z-index: 25;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 75%; }
+  .container .card .footer {
+    width: 100%;
+    display: block;
+    text-indent: -9999px;
+    background-image: url(../images/shLogo.svg);
+    background-size: auto 100%;
+    height: 5%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: absolute;
+    bottom: 10%;
+    z-index: 10; }
+    .container .card .footer h2 {
       display: none; }
 
 .container .card-btn {
   display: none; }
 
 .container .card-btn-screen:checked + .card {
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0; }
+  top: 1%;
+  right: 1%;
+  bottom: 1%;
+  left: 1%; }
+  .container .card-btn-screen:checked + .card .header label.label-screen {
+    margin: 0 20px; }
+  .container .card-btn-screen:checked + .card .header i.icon-minimize {
+    font-size: 35px; }
+  .container .card-btn-screen:checked + .card .header i.icon-maximize {
+    font-size: 55px; }
+  .container .card-btn-screen:checked + .card .header i.icon-close {
+    font-size: 55px; }
 
 .container .card-btn.card-btn-min:checked ~ .card {
-  top: calc(100% - 40px);
+  top: calc(100% - 50px);
   right: 75%;
   bottom: 0;
   left: 0;
-  border: 5px solid #94aec2;
   border-radius: 0;
-  /* pokazać max ukryć min i screen */ }
+  border: 1px solid #95A0A6; }
+  @media only screen and (max-width: 992px) {
+    .container .card-btn.card-btn-min:checked ~ .card {
+      right: 50%; } }
+  @media only screen and (max-width: 450px) {
+    .container .card-btn.card-btn-min:checked ~ .card {
+      right: 0; } }
   .container .card-btn.card-btn-min:checked ~ .card .header {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     text-align: left; }
     .container .card-btn.card-btn-min:checked ~ .card .header .label-min,
     .container .card-btn.card-btn-min:checked ~ .card .header .label-screen {
       display: none; }
-    .container .card-btn.card-btn-min:checked ~ .card .header label {
-      text-align: left; }
-      .container .card-btn.card-btn-min:checked ~ .card .header label:hover {
-        background: #c0ddf4; }
-    .container .card-btn.card-btn-min:checked ~ .card .header button {
+    .container .card-btn.card-btn-min:checked ~ .card .header label.label-close {
       position: absolute;
       right: 0;
       top: 0;
       border: 0;
-      background: tomato;
-      color: white; }
-      .container .card-btn.card-btn-min:checked ~ .card .header button:hover {
-        background: #ff917e; }
-    .container .card-btn.card-btn-min:checked ~ .card .header .label-max {
+      color: white;
+      max-width: 40px;
+      padding: 5px; }
+      .container .card-btn.card-btn-min:checked ~ .card .header label.label-close i.icon-close {
+        font-size: 35px; }
+    .container .card-btn.card-btn-min:checked ~ .card .header label.label-max {
       border-radius: 0;
       width: 100%;
+      max-width: 100%;
       background: #94aec2;
-      display: inline-block; }
+      display: inline-block;
+      text-align: left;
+      height: 50px;
+      line-height: 50px;
+      padding-left: 25px; }
+      .container .card-btn.card-btn-min:checked ~ .card .header label.label-max:hover {
+        background: #c0ddf4; }
+  .container .card-btn.card-btn-min:checked ~ .card .content,
+  .container .card-btn.card-btn-min:checked ~ .card .footer {
+    display: none; }
